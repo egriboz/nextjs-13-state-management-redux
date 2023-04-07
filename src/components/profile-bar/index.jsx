@@ -1,5 +1,8 @@
+import { store } from "@/stores"
+
 export function ProfileBar() {
-  const user = {};
+  console.log("---", store.getState().user)
+  const { user } = store.getState().user;
 
   return (
     <div>

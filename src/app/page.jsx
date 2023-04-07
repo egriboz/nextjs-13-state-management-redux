@@ -1,8 +1,13 @@
+import { store } from "@/stores"
+import { fetchProducts } from "@/stores/products-store";
 import { AddBasketButton } from "@/components/add-basket-button";
 import Link from "next/link";
 
 export default async function HomePage() {
-  const products = [];
+
+  await store.dispatch(fetchProducts())
+  console.log("store===products: ", store.getState().products)
+  const { products } = store.getState().products;
 
   if (!products.length) {
     return <h1>No products</h1>;

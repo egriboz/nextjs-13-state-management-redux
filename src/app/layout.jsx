@@ -3,14 +3,16 @@ import "@/styles.css";
 import { Header } from "@/components/header";
 import { Rubik } from "next/font/google";
 import { store } from "@/stores";
+import { fetchUser } from "@/stores/user-store";
 
 const BodyFont = Rubik({
   subsets: ["latin"],
 });
 
 export default async function RootLayout({ children }) {
-  console.log("store***************")
-  console.log("store", store.getState())
+
+  await store.dispatch(fetchUser())
+
   return (
     <html>
       <body className={BodyFont.className}>
